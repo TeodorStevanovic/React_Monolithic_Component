@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ArticlesList from "./ArticlesList";
 
 const id = (function* () {
   let i = 1;
@@ -89,28 +90,11 @@ function App() {
         <button onClick={clickAdd}>Add</button>
       </header>
       <article>
-        <ul>
-          {articles.map((i) => (
-            <li key={i.id}>
-              <a
-                href={`#${i.id}`}
-                title="Toggle Summary"
-                onClick={() => toggleArticle(i.id)}
-              >
-                {i.title}
-              </a>
-              &nbsp;
-              <a
-                href={`#${i.id}`}
-                title="Remove"
-                onClick={() => removeArticle(i.id)}
-              >
-                &#10007;
-              </a>
-              <p style={{ display: i.display }}>{i.summary}</p>
-            </li>
-          ))}
-        </ul>
+        <ArticlesList
+          articles={articles}
+          toggleArticle={toggleArticle}
+          removeArticle={removeArticle}
+        />
       </article>
     </section>
   );
