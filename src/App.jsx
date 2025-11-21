@@ -55,6 +55,19 @@ function App() {
     setArticles((articles) => articles.filter((article) => article.id !== id));
   };
 
+  const toggleArticle = (id) => {
+    setArticles((articles) =>
+      articles.map((article) =>
+        article.id === id
+          ? {
+              ...article,
+              display: article.display === "none" ? "block" : "none",
+            }
+          : article
+      )
+    );
+  };
+
   const [title, setTitle] = useState("");
 
   const changeTitle = (e) => {
@@ -79,11 +92,19 @@ function App() {
         <ul>
           {articles.map((i) => (
             <li key={i.id}>
-              <a href={`#${i.id}`} title="Toggle Summary">
+              <a
+                href={`#${i.id}`}
+                title="Toggle Summary"
+                onClick={() => toggleArticle(i.id)}
+              >
                 {i.title}
               </a>
               &nbsp;
-              <a href={`#${i.id}`} title="Remove" onClick={() => removeArticle(i.id)}>
+              <a
+                href={`#${i.id}`}
+                title="Remove"
+                onClick={() => removeArticle(i.id)}
+              >
                 &#10007;
               </a>
               <p style={{ display: i.display }}>{i.summary}</p>
