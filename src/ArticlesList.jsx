@@ -1,27 +1,16 @@
 import React from "react";
+import ArticleItem from "./ArticleItem";
 
 const ArticlesList = ({ articles, toggleArticle, removeArticle }) => {
   return (
     <ul>
-      {articles.map((i) => (
-        <li key={i.id}>
-          <a
-            href={`#${i.id}`}
-            title="Toggle Summary"
-            onClick={() => toggleArticle(i.id)}
-          >
-            {i.title}
-          </a>
-          &nbsp;
-          <a
-            href={`#${i.id}`}
-            title="Remove"
-            onClick={() => removeArticle(i.id)}
-          >
-            &#10007;
-          </a>
-          <p style={{ display: i.display }}>{i.summary}</p>
-        </li>
+      {articles.map((article) => (
+        <ArticleItem
+          key={article.id}
+          article={article}
+          toggleArticle={toggleArticle}
+          removeArticle={removeArticle}
+        />
       ))}
     </ul>
   );
