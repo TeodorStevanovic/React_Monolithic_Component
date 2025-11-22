@@ -10,7 +10,7 @@ const id = (function* () {
   }
 })();
 
-function App() {
+function ArticleManager() {
   const [articles, setArticles] = useState([
     {
       id: id.next().value,
@@ -103,4 +103,4 @@ function App() {
   );
 }
 
-export default App;
+export default ArticleManager;
