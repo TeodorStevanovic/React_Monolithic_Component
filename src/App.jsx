@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ArticlesList from "./ArticlesList";
+import AddArticle from "./AddArticle";
 
 const id = (function* () {
   let i = 1;
@@ -83,12 +84,14 @@ function App() {
 
   return (
     <section>
-      <header>
-        <h1>Articles</h1>
-        <input placeholder="Title" value={title} onChange={changeTitle} />
-        <input placeholder="Summary" value={summary} onChange={changeSummary} />
-        <button onClick={clickAdd}>Add</button>
-      </header>
+      <AddArticle
+        name="Article"
+        title={title}
+        summary={summary}
+        changeTitle={changeTitle}
+        changeSummary={changeSummary}
+        clickAdd={clickAdd}
+      />
       <article>
         <ArticlesList
           articles={articles}
